@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import core.springbackend.roles.entities.Role;
 import core.springbackend.shared.entities.State;
 
 @Entity

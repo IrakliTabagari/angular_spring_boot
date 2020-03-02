@@ -1,4 +1,4 @@
-package core.springbackend.users.entities;
+package core.springbackend.roles.entities;
 
 import java.util.Set;
 

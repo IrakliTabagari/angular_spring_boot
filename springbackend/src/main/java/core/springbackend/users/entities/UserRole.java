@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import core.springbackend.roles.entities.Role;
 import core.springbackend.shared.entities.State;
 
 @Entity
@@ -21,17 +22,17 @@ public class UserRole {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
-	
-	@Column(name="state_id")
-	private Long stateId;
-	
+		
+	@NotNull
+	@Column(name="role_id")
+	private Long roleId;
+
 	@NotNull
 	@Column(name="user_id")
 	private Long userId;
 	
-	@NotNull
-	@Column(name="role_id")
-	private Long roleId;
+	@Column(name="state_id")
+	private Long stateId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable=false, updatable=false)

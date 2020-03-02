@@ -1,4 +1,4 @@
-package core.springbackend.users.entities;
+package core.springbackend.roles.entities;
 
 import java.util.Set;
 import javax.persistence.Column;
@@ -17,41 +17,46 @@ import javax.validation.constraints.NotNull;
 import core.springbackend.shared.entities.State;
 
 @Entity
-@Table(name="roles")
-public class Role {
+@Table(name="roles_rights")
+public class RoleRight {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
-
+	
 	@NotNull
-	@Column(name="name")
-	private String name;
+	@Column(name = "right_id")
+	private Long rightId;
 	
-	@Column(name="description")
-	private String description;
-	
+	@NotNull
+	@Column(name = "role_id")
+	private Long roleId;	
+
 	@NotNull
 	@Column(name="state_id")
 	private Long stateId;
 	
-//	@OneToMany(fetch = FetchType.LAZY, 
-//			mappedBy = "rights",
-//			targetEntity=Right.class)
-	@Transient
-    private Set<Right> rights;
 
-
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "right_id", insertable=false, updatable=false)
+    private Right right;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "role_id", insertable=false, updatable=false)
+	private Role role;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "state_id", insertable=false, updatable=false)
 	private State state;
 	
-//@OneToMany(fetch = FetchType.LAZY, 
-//mappedBy = "roles",
-//targetEntity=User.class)
-//@Transient
-//private Set<User> users;
+	
+//	@NotNull
+//	@OneToMany(fetch = FetchType.LAZY, 
+//			mappedBy = "users",
+//			targetEntity=User.class)
+//	@Transient
+//    private Set<User> users;
 
 	
 	
@@ -64,20 +69,20 @@ public class Role {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Long getRightId() {
+		return rightId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setRightId(Long rightId) {
+		this.rightId = rightId;
 	}
 
-	public String getDescription() {
-		return description;
+	public Long getRoleId() {
+		return roleId;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
 	}
 
 	public Long getStateId() {
@@ -88,12 +93,20 @@ public class Role {
 		this.stateId = stateId;
 	}
 
-	public Set<Right> getRights() {
-		return rights;
+	public Right getRight() {
+		return right;
 	}
 
-	public void setRights(Set<Right> rights) {
-		this.rights = rights;
+	public void setRight(Right right) {
+		this.right = right;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	public State getState() {
@@ -104,6 +117,4 @@ public class Role {
 		this.state = state;
 	}
 
-
-	
 }
