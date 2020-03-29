@@ -1,5 +1,17 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <span>Custom Toolbar</span>
+
+        <div fxLayout="row" fxFlex fxFlexAlign="stretch" fxLayoutAlign="start center">
+
+            <span>Custom Toolbar</span>
+
+            <div fxLayout="row" fxLayoutAlign="end center" fxFlex>
+                <div>
+                    <button mat-raised-button color="accent">Log Out</button>
+                </div>
+            </div>
+            
+        </div>
+
     </mat-toolbar-row>
 </mat-toolbar>

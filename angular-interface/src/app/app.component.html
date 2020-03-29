@@ -1,5 +1,13 @@
-<app-header fxLayout="row"></app-header>
-<div fxFill fxLayout="column" fxFlexAlign="stretch" fxFlexFill>
-    <router-outlet ></router-outlet>
+<div flex fxFill fxFlexAlign="stretch" fxLayout="column">
+    <div fxFlexAlign="start" fxFlexAlign="stretch">
+        <app-header></app-header>
+    </div>
+
+    <div flex fxFlex fxFlexAlign="stretch">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div fxFlexAlign="start" fxFlexAlign="stretch">
+        <app-footer></app-footer>
+    </div>
 </div>
-<app-footer fxLayout="row" fxFlexAlign="end"></app-footer>

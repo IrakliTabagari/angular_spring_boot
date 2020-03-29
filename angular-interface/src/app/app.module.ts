@@ -8,6 +8,10 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppMaterialsModule } from './app-materials.module';
+import { XhrInterceptor } from './security/xhrinterceptor ';
+import {
+  HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
+} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,7 @@ import { AppMaterialsModule } from './app-materials.module';
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

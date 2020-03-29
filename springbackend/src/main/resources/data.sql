@@ -35,9 +35,9 @@ VALUES (1, 'Admin', 'Admin Role With All Rights', 1);
 INSERT INTO roles_rights (role_id, right_id, state_id)
 SELECT 1, id, 1 FROM rights;
 
---1.3 create User
+--1.3 create User - admin/1234
 INSERT INTO users (id, first_name, last_name, user_name, password, description, email, phone, personal_id, state_id)
-VALUES(1, 'James', 'Bond', 'admin', '1234', 'user with all rights', 'james.bond007@admin.com', '777 777 777', '007007007', 1);
+VALUES(1, 'James', 'Bond', 'admin', '$2a$10$0p6en2Ww6jevjEIA4ZcWnOYTOZNoYmBwcNl8Coel.gkyff06diMBa', 'user with all rights', 'james.bond007@admin.com', '777 777 777', '007007007', 1);
 
 --1.4 create UserRole
 INSERT INTO users_roles (id, role_id, user_id, state_id)
